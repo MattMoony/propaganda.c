@@ -14,8 +14,8 @@
  *
  */
 
-#include "strings.h"
 #include <stdlib.h>
+#include "propaganda.h"
 
 /**
  * @brief   The "strlen" function can be used to obtain
@@ -58,6 +58,28 @@ char* strcpy(char* str) {
 
 char* newstr(char* str) {
     return strcpy(str);
+}
+
+/**
+ * @brief   The "strcat" function concats two "strings"
+ *          and returns the result.
+ * @param   (char*) str1: some "string"
+ * @param   (char*) str2: some other "string"
+ * @return  (char*) the concated result
+ */
+
+char* strcat(char* str1, char* str2) {
+    int len1 = strlen(str1),
+        len2 = strlen(str2);
+    char* res_s = (char*) malloc(sizeof(char)*(len1+len2+1));
+
+    for (int i = 0; i < len1; i++)
+        res_s[i] = str1[i];
+    for (int i = 0; i < len2; i++)
+        res_s[len1+i] = str2[i];
+    res_s[len1+len2] = '\0';
+
+    return res_s;
 }
 
 /**
@@ -115,7 +137,7 @@ char* substr(char* str, int start) {
 
 char* substring(char* str, int start, int end) {
     int len = strlen(str);
-    if (start >= len || start < 0 || end >= len || end < 0 || end <= start)
+    if (start >= len || start < 0 || end > len || end <= 0 || end <= start)
         return NULL;
 
     char *res_s = (char*) malloc(sizeof(char)*(end-start+1));
@@ -146,6 +168,24 @@ int indexOf(char* str, char c) {
 }
 
 /**
+ * @brief   The "indexOfFrom" function returns the first index
+ *          of the specified character, beginning from i.
+ * @param   (char*) str: some "string"
+ * @param   (char)    c: the specified character
+ * @param   (int)     i: the starting index
+ * @return  (int) the first index of the wanted character (if character not included: -1)
+ */
+
+int indexOfFrom(char* str, char c, int i) {
+    while (str[i] != c && str[i] != '\0')
+        i++;
+
+    if (str[i]!=c)
+        return -1;
+    return i;
+}
+
+/**
  * @brief   The "lastIndexOf" function returns the last index
  *          of the specified character in the passed "string".
  * @param   (char*) str: some "string"
@@ -159,6 +199,83 @@ int lastIndexOf(char* str, char c) {
         i--;
 
     if (str[i]!=c)
+        return -1;
+    return i;
+}
+
+/**
+ * @brief   The "indexOfString" function returns the index of
+ *          the specified substring in the "string".
+ * @param   (char*) str: some "string"
+ * @param   (char*) sub: the substring
+ * @return  (int) index of the substring (if substring not included: -1)
+ */
+
+int indexOfString(char* str, char* sub) {
+    int lenStr = strlen(str),
+        lenSub = strlen(sub);
+
+    if (lenSub>lenStr)
+        return -1;
+
+    int i = 0;
+    while (i <= lenStr-lenSub && !strequals(sub, substring(str, i, i+lenSub))) {
+        i++;
+    }
+
+    if (i > lenStr-lenSub || !strequals(sub, substring(str, i, i+lenSub)))
+        return -1;
+    return i;
+}
+
+/**
+ * @brief   The "indexOfStringFrom" function returns the first index
+ *          of the specified substring starting fromt the specified
+ *          index.
+ * @param   (char*) str: some "string"
+ * @param   (char*) sub: some substring
+ * @param   (int)     i: the starting index
+ * @return  (int) the first index (if substring not included: -1)
+ */
+
+int indexOfStringFrom(char* str, char* sub, int i) {
+    int lenStr = strlen(str),
+        lenSub = strlen(sub);
+
+    if (lenSub>lenStr-i)
+        return -1;
+
+    while (i <= lenStr-lenSub && !strequals(sub, substring(str, i, i+lenSub))) {
+        i++;
+    }
+
+    if (i > lenStr-lenSub || !strequals(sub, substring(str, i, i+lenSub)))
+        return -1;
+    return i;
+}
+
+/**
+ * @brief   The "lastIndexOfString" function returns the index
+ *          of the last occurrence of the substring in the
+ *          "string".
+ * @param   (char*) str: some "string"
+ * @param   (char*) sub: the substring
+ * @return  (int) last index of the substring (if substring not included: -1)
+ */
+
+int lastIndexOfString(char* str, char* sub) {
+    int lenStr = strlen(str),
+        lenSub = strlen(sub);
+
+    if (lenSub>lenStr)
+        return -1;
+
+    int i = lenStr-lenSub;
+    while (i >= 0 && !strequals(sub, substring(str, i, i+lenSub))) {
+        i--;
+    }
+
+    if (i < 0 || !strequals(sub, substring(str, i, i+lenSub)))
         return -1;
     return i;
 }
@@ -233,6 +350,30 @@ char** split(char* str, char c) {
 }
 
 /**
+ * @brief   The "splits" function splits a "string" at the
+ *          specified substring and returns the parts.
+ * @param   (char*) str: some "string"
+ * @param   (char*)   s: the substring
+ * @return  (char**) the individual parts
+ */
+
+char** splits(char* str, char* s) {
+    int occ = stringOccurrence(str, s);
+    char* cpy = strcpy(str);
+    char** parts = (char**) malloc(sizeof(char*)*(occ+1));
+
+    int lenSub = strlen(s);
+
+    for (int i = 0; i < occ; i++) {
+        parts[i] = substring(cpy, 0, indexOfString(cpy, s));
+        cpy = substr(cpy, indexOfString(cpy, s)+lenSub);
+    }
+    parts[occ] = cpy;
+
+    return parts;
+}
+
+/**
  * @brief   The "lowerCase" function returns the lowercase
  *          representation of the specified "string".
  * @param   (char*) str: some "string
@@ -298,4 +439,52 @@ void toUpperCase(char* str) {
         if (str[i] >= 97 && str[i] <= 122)
             str[i] = str[i]-32;
     }
+}
+
+/**
+ * @brief   The "replace" function replaces characters
+ *          of one "string" with other characters.
+ * @param   (char*) str: some "string"
+ * @param   (char)    c: the target character
+ * @param   (char)    r: the replacement character
+ */
+
+void replace(char* str, char c, char r) {
+    int t_ind;
+    int l_ind = 0;
+
+    while ((t_ind = indexOfFrom(str, c, l_ind)) >= 0) {
+        str[t_ind] = r;
+        l_ind = t_ind+1;
+    }
+}
+
+/**
+ * @brief   The "replaceString" function replaces
+ *          substrings of a "string" with other
+ *          substrings.
+ * @param   (char*) str: some "string"
+ * @param   (char*)   s: the target substring
+ * @param   (char*)   r: the replacement substring
+ * @return  (char*) the resulting "string"
+ */
+
+char* replaceString(char* str, char* s, char* r) {
+    int t_ind,
+        l_ind = 0;
+    int lenR = strlen(r),
+        lenS = strlen(s);
+    char* after;
+
+    while ((t_ind = indexOfStringFrom(str, s, l_ind)) >= 0) {
+        after = substr(str, t_ind+lenS);
+        str[t_ind] = '\0';
+
+        str = strcat(str, r);
+        str = strcat(str, after);
+
+        l_ind = t_ind + lenR;
+    }
+
+    return str;
 }

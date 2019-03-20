@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "strings.h"
+#include "propaganda.h"
 
 int main()
 {
@@ -11,11 +11,15 @@ int main()
     printf("-> Length:\t%d\n", strlen(msg));
     printf("-> Equals:\t%d\n", strequals(msg, "Hello World!"));
     printf("-> Equals:\t%d\n", strequals(msg, "Hello!"));
+    printf("-> Concat:\t%s\n", strcat(msg, " This is Matthias speaking ... "));
 
     printf("\n");
 
     printf("-> IndexOf:\t%d\n", indexOf(msg, 'o'));
     printf("-> LastIndexOf:\t%d\n", lastIndexOf(msg, 'o'));
+
+    printf("-> IndexOf:\t%d\n", indexOfString(msg, "World!"));
+    printf("-> LastIndexOf:\t%d\n", lastIndexOfString(msg, "World!"));
 
     printf("\n");
 
@@ -49,5 +53,34 @@ int main()
         printf("\t[%d]: \"%s\"\n", i, parts[i]);
 
     printf("\n");
+
+    msg = newstr("This\r\nis\r\nsome\r\nrandom\r\ntext!\r\n ");
+    printf("-> Split(\\r\\n):\n\n");
+
+    parts = splits(msg, "\r\n");
+    for (int i = 0; i < stringOccurrence(msg, "\r\n")+1; i++)
+        printf("\t[%d]: \"%s\"\n", i, parts[i]);
+
+    printf("\n");
+
+    msg = newstr("Hello World!");
+
+    replace(msg, 'o', '0');
+    replace(msg, 'e', '3');
+
+    printf("-> Replace:\t%s\n", msg);
+
+    msg = newstr("Hello World!");
+
+    msg = replaceString(msg, "Hello", "H3ll0");
+    msg = replaceString(msg, "World", "h4x0rs");
+
+    printf("-> Replace:\t%s\n", msg);
+
+    printf("\n");
+
+    char c;
+    scanf("%c", &c);
+
     return 0;
 }
