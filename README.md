@@ -180,7 +180,7 @@ printf("New string: %s\n", str);
 // ...
 ```
 
-    ![exa5_output](media/05.JPG)
+![exa5_output](media/05.JPG)
 
   * ##### Creating a substring from ... to ...
     You can however, also create a substring starting at some index, and ending at another index by using the `substring((char*) string, int start, int end)` function.
@@ -198,7 +198,7 @@ printf("New string: %s\n", str);
 // ...
 ```
 
-    ![exa6_output](media/06.JPG)
+![exa6_output](media/06.JPG)
 
 #### Getting the index of a character
 
@@ -217,7 +217,7 @@ printf("First index: %d\n", index);
 // ...
 ```
 
-    ![exa7_output](media/07.JPG)
+![exa7_output](media/07.JPG)
 
   * ##### First index of character from ...
     Sometimes, you might want to get the first occurrence of a character from a certain index. You can use the `indexOfFrom((char*) str, (char) c)` function to achieve this.
@@ -233,7 +233,7 @@ printf("First index from: %d\n", fIndex);
 // ...
 ```
 
-    ![exa9_output](media/09.JPG)
+![exa9_output](media/09.JPG)
 
   * ##### Last index of character
     If you need to get the last index of the character, use the `lastIndexOf((char*) str, (char) c)`, which searches the string from the end.
@@ -249,7 +249,7 @@ printf("Last index: %d\n", lIndex);
 // ...
 ```
 
-    ![exa8_output](media/08.JPG)
+![exa8_output](media/08.JPG)
 
 **Note:** All `indexOf...()` functions return a value of `-1` if no match was found.
 
@@ -270,7 +270,7 @@ printf("First index: %d\n", index);
 // ...
 ```
 
-    ![exa10_output](media/10.JPG)
+![exa10_output](media/10.JPG)
 
   * ##### First index of substring from ...
     Sometimes, you might want to get the first occurrence of a  string from a certain index. You can use the   `indexOfStringFrom((char*) str, (char*) sub)` function to achieve this.
@@ -286,7 +286,7 @@ printf("First index from: %d\n", fIndex);
 // ...
 ```
 
-    ![exa11_output](media/11.JPG)
+![exa11_output](media/11.JPG)
 
   * ##### Last index of substring
     If you need to get the last index of the substring, use the   `lastIndexOfString((char*) str, (char*) sub)`, which searches the string from the end.
@@ -302,7 +302,7 @@ printf("Last index: %d\n", lIndex);
 // ...
 ```
 
-    ![exa12_output](media/12.JPG)
+![exa12_output](media/12.JPG)
 
 **Note:** All `indexOfString...()` functions return a value of `-1` if no match was found.
 
@@ -404,7 +404,7 @@ printf("Original: %s\n", mystr);
 // ...
 ```
 
-    ![exa17_output](media/17.JPG)
+![exa17_output](media/17.JPG)
 
   2. ##### Value to lowercase
     The second option would be, to convert the value of your "string" to lowercase using the `toLowerCase((char*) str)` function.
@@ -420,7 +420,7 @@ printf("Original-lowercase: %s\n", str);
 // ...
 ```
 
-    ![exa18_output](media/18.JPG)
+![exa18_output](media/18.JPG)
 
     **Note:** When using the `toLowerCase(...)` function, it's necessary, that your string was created dynamically.
 
@@ -442,7 +442,7 @@ printf("Original: %s\n", str);
 // ...
 ```
 
-    ![exa19_output](media/19.JPG)
+![exa19_output](media/19.JPG)
 
   2. ##### Value to uppercase
     The second option, once again, converts the value of the "string" to uppercase. Use the `toUpperCase((char*) str)` function for this.
@@ -458,7 +458,7 @@ printf("Original-uppercase: %s\n", mystr);
 // ...
 ```
 
-    ![exa20_output](media/20.JPG)
+![exa20_output](media/20.JPG)
 
     **Note:** When using the `toUpperCase(...)` function, it's necessary, that your string was created dynamically.
 
@@ -562,7 +562,7 @@ printf("String: %s\n", my_str);
 
 ```
 
-    ![exa26_output](media/26.JPG)
+![exa26_output](media/26.JPG)
 
   * ##### Boolean value to string
     To convert a boolean value to a _string_, you should use the `btos((int) b)` function.
@@ -576,7 +576,7 @@ printf("String: %s\n", my_str);
 
 ```
 
-    ![exa27_output](media/27.JPG)
+![exa27_output](media/27.JPG)
 
   * ##### Long to string
     To convert a long to a _string_, you can use the `ltos((long) n)` function.
@@ -592,7 +592,7 @@ printf("String: %s\n", my_str);
 // ...
 ```
 
-    ![exa28_output](media/28.JPG)
+![exa28_output](media/28.JPG)
 
   * ##### Float to string
     To convert a float to a _string_, use the `ftos((float) n, (int) r)` function.
@@ -610,7 +610,7 @@ printf("String: %s\n", my_str);
 // ...
 ```
 
-    ![exa29_output](media/29.JPG)
+![exa29_output](media/29.JPG)
 
   * ##### Double to string
     To convert a double to a _string_, you should use the `dtos((double) n, (int) r)` function.
@@ -628,7 +628,7 @@ printf("String: %s\n", my_str);
 // ...
 ```
 
-    ![exa30_output](media/30.JPG)
+![exa30_output](media/30.JPG)
 
 #### Convert from string
 
@@ -647,7 +647,7 @@ printf("Integer: %d\n", my_int);
 // ...
 ```
 
-    ![exa31_output](media/31.JPG)
+![exa31_output](media/31.JPG)
 
   * ##### String to boolean value
     To convert a _string_ to a boolean value, you should use the `stob((char*) str)` function.
@@ -663,7 +663,7 @@ printf("Boolean: %d\n", my_boo);
 // ...
 ```
 
-    ![exa32_output](media/32.JPG)
+![exa32_output](media/32.JPG)
 
   * ##### String to long
     To convert a _string_ to a long, you can use the `stol((char*) str)` function.
@@ -679,7 +679,7 @@ printf("Long: %ld\n", my_lon);
 // ...
 ```
 
-    ![exa33_output](media/33.JPG)
+![exa33_output](media/33.JPG)
 
   * ##### String to float
     To convert a _string_ to a float, use the `stof((char*) str)` function.
@@ -695,7 +695,7 @@ printf("Float: %f\n", my_flo);
 // ...
 ```
 
-    ![exa34_output](media/34.JPG)
+![exa34_output](media/34.JPG)
 
   * ##### String to double
     To convert a _string_ to a double, you can use the `stod((char*) str)` function.
@@ -711,7 +711,7 @@ printf("Double: %.15lf\n", my_dou);
 // ...
 ```
 
-    ![exa35_output](media/35.JPG)
+![exa35_output](media/35.JPG)
 
 ## Conclusion
 
