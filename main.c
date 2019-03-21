@@ -1,9 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "propaganda.h"
 
 int main()
 {
-    char* msg = newstr("Hello World!");
+    /*char* msg = newstr("Hello World!");
     char* cpy = strcpy(msg);
 
     cpy[0] = 'A';
@@ -78,6 +79,33 @@ int main()
     printf("-> Replace:\t%s\n", msg);
 
     printf("\n");
+
+    msg = newstr("      \n\rHello World!\n     ");
+    printf("->Message:\t\"%s\"\n", msg);
+    printf("->Trimmed:\t\"%s\"\n", trim(msg));
+
+    printf("\n");
+
+    printf("->itos:\t%s\n", itos(1024));
+    printf("->btos:\t%s\n", btos(0));
+    printf("->ltos:\t%s\n", ltos(80000000l));
+    printf("->ftos:\t%s\n", ftos(8.5096f, 4));
+    printf("->dtos:\t%s\n", dtos(8.0123456789, 10));
+
+    printf("\n");
+
+    printf("->stoi:\t%d\n", stoi("1024"));
+    printf("->stob:\t%d\n", stob("false"));
+    printf("->stol:\t%ld\n", stol("80000000"));
+    printf("->stof:\t%f\n", stof("8.5096"));
+    printf("->stod:\t%.10lf\n", stod("8.0123456789"));
+
+    printf("\n");*/
+
+    char* msg = newstr("      \n\rHello World!\n     ");
+    char* trimmed = trim(msg);
+
+    printf("Trimmed: %s\n", trimmed);
 
     char c;
     scanf("%c", &c);

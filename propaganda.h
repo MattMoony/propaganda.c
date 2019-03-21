@@ -32,4 +32,21 @@ void toUpperCase(char*);
 void replace(char*, char, char);
 char* replaceString(char*, char*, char*);
 
+char* trim(char*);
+
+char itoc(int);
+int ctoi(char);
+
+char* itos(int);
+char* btos(int);
+char* ltos(long);
+char* ftos(float, int);
+char* dtos(double, int);
+
+int stoi(char*);
+int stob(char*);
+long stol(char*);
+float stof(char*);
+double stod(char*);
+
 #endif // PROPAGANDA_H

@@ -488,3 +488,261 @@ char* replaceString(char* str, char* s, char* r) {
 
     return str;
 }
+
+/**
+ * @brief   The "trim" function removes unwanted whitespace
+ *          characters from before and after the "string"'s
+ *          actual content.
+ * @param   (char*) str: some "string"
+ * @return  (char*) the trimmed string
+ */
+
+char* trim(char* str) {
+    int left = 0;
+    while (str[left]<=32) { left++; }
+
+    str = substr(str, left);
+
+    int right = strlen(str)-1;
+    while (str[right]<=32) { right--; }
+
+    str = substring(str, 0, right+1);
+    return str;
+}
+
+/**
+ * @brief   The "itoc" function converts an integer to a
+ *          character. (e.g.: 8 -> '8')
+ * @param   (int) n: the integer
+ * @return  (char) the char
+ */
+
+char itoc(int n) {
+    n %= 10;
+    return (char) (n+48);
+}
+
+/**
+ * @brief   The "ctoi" function converts a character to
+ *          an integer. (e.g.: '8' -> 8)
+ * @param   (char) c: the character
+ * @return  (int) the integer (if character not in range: -1)
+ */
+
+int ctoi(char c) {
+    if (c < 48 || c > 57)
+        return -1;
+    return (int) c - 48;
+}
+
+/**
+ * @brief   The "itos" function converts an integer to a
+ *          "string".
+ * @param   (int) n: The integer
+ * @return  (char*) the "string"
+ */
+
+char* itos(int n) {
+    if (n == 0)
+        return newstr("0");
+
+    int h_pot = -1;
+    while ((double)n/pow(10.0, (double)(++h_pot)) >= 1.0) {}
+
+    char* res_s = (char*) malloc(sizeof(char)*(h_pot+1));
+    for (int i = h_pot-1; i >= 0; i--) {
+        res_s[h_pot-i-1] = itoc(n/(int) pow(10.0, (double) i));
+        n %= (int) pow(10.0, (double) i);
+    }
+    res_s[h_pot] = '\0';
+
+    return res_s;
+}
+
+/**
+ * @brief   The "btos" function converts a boolean value to
+ *          a string. (e.g.: 1 -> "true")
+ * @param   (int) b: the boolean value
+ * @return  (char*) the "string"
+ */
+
+char* btos(int b) {
+    return b ? newstr("true") : newstr("false");
+}
+
+/**
+ * @brief   The "ltos" function converts a long to a
+ *          "string".
+ * @param   (long) n: The long
+ * @return  (char*) the "string"
+ */
+
+char* ltos(long n) {
+    if (n == 0l)
+        return newstr("0");
+
+    int h_pot = -1;
+    while ((double)n/pow(10.0, (double)(++h_pot)) >= 1.0) {}
+
+    char* res_s = (char*) malloc(sizeof(char)*(h_pot+1));
+    for (int i = h_pot-1; i >= 0; i--) {
+        res_s[h_pot-i-1] = itoc(n/(int) pow(10.0, (double) i));
+        n %= (int) pow(10.0, (double) i);
+    }
+    res_s[h_pot] = '\0';
+
+    return res_s;
+}
+
+/**
+ * @brief   The "ftos" function converts a float to a
+ *          "string".
+ * @param   (float) n: The float
+ * @param   (int)   l: the amount of decimals to round to
+ * @return  (char*) the "string"
+ */
+
+char* ftos(float n, int l) {
+    int before_c = (int) n;
+    n -= (float) before_c;
+
+    char* res_s = itos(before_c);
+    res_s = strcat(res_s, newstr("."));
+
+    for (int i = 0; i < l-1; i++) {
+        n *= 10;
+        res_s = strcat(res_s, itos((int) n));
+        printf("%f\n", n);
+        printf("%s\n", res_s);
+        n -= (int) n;
+    }
+
+    n *= 10;
+    int diq = (int) n;
+    n -= diq;
+
+    if (n >= 0.5f)
+        diq++;
+    res_s = strcat(res_s, itos(diq));
+
+    return res_s;
+}
+
+/**
+ * @brief   The "dtos" function converts a double to a
+ *          "string".
+ * @param   (float) n: The double
+ * @param   (int)   l: the amount of decimals to round to
+ * @return  (char*) the "string"
+ */
+
+char* dtos(double n, int l) {
+    int before_c = (int) n;
+    n -= (float) before_c;
+
+    char* res_s = itos(before_c);
+    res_s = strcat(res_s, newstr("."));
+
+    for (int i = 0; i < l-1; i++) {
+        n *= 10;
+        res_s = strcat(res_s, itos((int) n));
+        n -= (int) n;
+    }
+
+    n *= 10;
+    int diq = (int) n;
+    n -= diq;
+
+    if (n >= 0.5)
+        diq++;
+    res_s = strcat(res_s, itos(diq));
+
+    return res_s;
+}
+
+/**
+ * @brief   The "stoi" function converts a string to an
+ *          integer.
+ * @param   (char*) str: the "string"
+ * @return  (int) the integer
+ */
+
+int stoi(char* str) {
+    int lenStr = strlen(str);
+    int res = 0;
+
+    for (int i = lenStr-1; i >= 0; i--) {
+        res += ctoi(str[lenStr-i-1]) * (int) pow(10.0, i);
+    }
+
+    return res;
+}
+
+/**
+ * @brief   The "stob" function converts a string to a
+ *          boolean value.
+ * @param   (char*) str: the "string"
+ * @return  (int) the boolean value
+ */
+
+int stob(char* str) {
+    return strequals(str, "true");
+}
+
+/**
+ * @brief   The "stol" function converts a string to a
+ *          long value.
+ * @param   (char*) str: the "string"
+ * @return  (long) the long
+ */
+
+long stol(char* str) {
+    int lenStr = strlen(str);
+    long res = 0;
+
+    for (int i = lenStr-1; i >= 0; i--) {
+        res += ctoi(str[lenStr-i-1]) * (long) pow(10.0, i);
+    }
+
+    return res;
+}
+
+/**
+ * @brief   The "stof" function converts a string to a
+ *          float.
+ * @param   (char*) str: the "string"
+ * @return  (float) the float
+ */
+
+float stof(char* str) {
+    if (indexOf(str, '.') < 0)
+        return 0.0f;
+
+    float res = (float) stoi(substring(str, 0, indexOf(str, '.')));
+
+    char* after_c = substr(str, indexOf(str, '.')+1);
+    float af_c = (float) stoi(after_c);
+    res += af_c * (float) pow(10, -strlen(after_c));
+
+    return res;
+}
+
+/**
+ * @brief   The "stod" function converts a string to a
+ *          double.
+ * @param   (char*) str: the "string"
+ * @return  (double) the double
+ */
+
+double stod(char* str) {
+    if (indexOf(str, '.') < 0)
+        return 0.0f;
+
+    double res = (double) stoi(substring(str, 0, indexOf(str, '.')));
+
+    char* after_c = substr(str, indexOf(str, '.')+1);
+    double af_c = (double) stoi(after_c);
+    res += af_c * pow(10, -strlen(after_c));
+
+    return res;
+}
