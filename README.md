@@ -1,3 +1,5 @@
+![GitHub release](https://img.shields.io/github/release/MattMoony/propaganda.c.svg) ![GitHub top language](https://img.shields.io/github/languages/top/MattMoony/propaganda.c.svg) ![GitHub last commit](https://img.shields.io/github/last-commit/MattMoony/propaganda.c.svg) ![GitHub All Releases](https://img.shields.io/github/downloads/MattMoony/propaganda.c/total.svg) ![GitHub repo size in bytes](https://img.shields.io/github/repo-size/MattMoony/propaganda.c.svg) ![GitHub](https://img.shields.io/github/license/MattMoony/propaganda.c.svg)
+
 # propaganda.c
 _A C-library for string manipulations_
 
@@ -511,7 +513,205 @@ printf("Trimmed: %s\n", trimmed);
 
 ![exa23_output](media/23.JPG)
 
-**-- to be continued --**
+#### Integer to character
+
+In order to convert an integer to its character representation, you can use the `itoc((int) n)`.
+
+```C
+// ...
+
+int number = 8;
+char n_chr = itoc(8);
+
+printf("As character: %c\n", n_chr);
+
+// ...
+```
+
+![exa24_output](media/24.JPG)
+
+#### Character to integer
+
+You can also do it the other way around by using the `ctoi((char) c)` function.
+
+```C
+// ...
+
+char n_chr = '2';
+int number = ctoi(n_chr);
+
+printf("As integer: %d\n", number);
+
+// ...
+```
+
+![exa25_output](media/25.JPG)
+
+#### Convert to string
+
+The following are all functions to convert several datatypes to a _string_.
+  * ##### Integer to string
+    To convert an integer to a _string_, use the `itos((int) n)` function.
+
+    ```C
+
+    int my_int = 802;
+    char* my_str = itos(my_int);
+
+    printf("String: %s\n", my_str);
+
+    ```
+
+    ![exa26_output](media/26.JPG)
+
+  * ##### Boolean value to string
+    To convert a boolean value to a _string_, you should use the `btos((int) b)` function.
+
+    ```C
+
+    int my_boo = 0;
+    char* my_str = btos(my_boo);
+
+    printf("String: %s\n", my_str);
+
+    ```
+
+    ![exa27_output](media/27.JPG)
+
+  * ##### Long to string
+    To convert a long to a _string_, you can use the `ltos((long) n)` function.
+
+    ```C
+    // ...
+
+    long my_lon = 8000000l;
+    char* my_str = ltos(my_lon);
+
+    printf("String: %s\n", my_str);
+
+    // ...
+    ```
+
+    ![exa28_output](media/28.JPG)
+
+  * ##### Float to string
+    To convert a float to a _string_, use the `ftos((float) n, (int) r)` function.
+
+    **Note:** The `r` parameter specifies how many decimals to round to.
+
+    ```C
+    // ...
+
+    float my_flo = 3.141f;
+    char* my_str = ftos(my_flo, 3);
+
+    printf("String: %s\n", my_str);
+
+    // ...
+    ```
+
+    ![exa29_output](media/29.JPG)
+
+  * ##### Double to string
+    To convert a double to a _string_, you should use the `dtos((double) n, (int) r)` function.
+
+    **Note:** The `r` parameter specifies to how many decimals the resulting "string" should be rounded.
+
+    ```C
+    // ...
+
+    double my_dou = 3.14159265359;
+    char* my_str = dtos(my_dou, 10);
+
+    printf("String: %s\n", my_str);
+
+    // ...
+    ```
+
+    ![exa30_output](media/30.JPG)
+
+#### Convert from string
+
+The following are all functions to convert a _string_ to several, different datatypes.
+  * ##### String to integer
+    To convert a _string_ to an integer, use the `stoi((char*) str)` function.
+
+    ```C
+    // ...
+
+    char* my_str = "1024";
+    int my_int = stoi(my_str);
+
+    printf("Integer: %d\n", my_int);
+
+    // ...
+    ```
+
+    ![exa31_output](media/31.JPG)
+
+  * ##### String to boolean value
+    To convert a _string_ to a boolean value, you should use the `stob((char*) str)` function.
+
+    ```C
+    // ...
+
+    char* my_str = "true";
+    int my_boo = stob(my_str);
+
+    printf("Boolean: %d\n", my_boo);
+
+    // ...
+    ```
+
+    ![exa32_output](media/32.JPG)
+
+  * ##### String to long
+    To convert a _string_ to a long, you can use the `stol((char*) str)` function.
+
+    ```C
+    // ...
+
+    char* my_str = "8000000";
+    long my_lon = stol(my_str);
+
+    printf("Long: %ld\n", my_lon);
+
+    // ...
+    ```
+
+    ![exa33_output](media/33.JPG)
+
+  * ##### String to float
+    To convert a _string_ to a float, use the `stof((char*) str)` function.
+
+    ```C
+    // ...
+
+    char* my_str = "3.141";
+    float my_flo = stof(my_str);
+
+    printf("Float: %f\n", my_flo);
+
+    // ...
+    ```
+
+    ![exa34_output](media/34.JPG)
+
+  * ##### String to double
+    To convert a _string_ to a double, you can use the `stod((char*) str)` function.
+
+    ```C
+    // ...
+
+    char* my_str = "3.14159265359";
+    double my_dou = stod(my_str);
+
+    printf("Double: %.15lf\n", my_dou);
+
+    // ...
+    ```
+
+    ![exa35_output](media/35.JPG)
 
 ## Conclusion
 

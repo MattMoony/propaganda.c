@@ -612,8 +612,6 @@ char* ftos(float n, int l) {
     for (int i = 0; i < l-1; i++) {
         n *= 10;
         res_s = strcat(res_s, itos((int) n));
-        printf("%f\n", n);
-        printf("%s\n", res_s);
         n -= (int) n;
     }
 
@@ -721,8 +719,9 @@ float stof(char* str) {
     float res = (float) stoi(substring(str, 0, indexOf(str, '.')));
 
     char* after_c = substr(str, indexOf(str, '.')+1);
-    float af_c = (float) stoi(after_c);
-    res += af_c * (float) pow(10, -strlen(after_c));
+    for (int i = 0; i < strlen(after_c); i++) {
+        res += ctoi(after_c[i]) * (float) pow(10, -i-1);
+    }
 
     return res;
 }
@@ -736,13 +735,14 @@ float stof(char* str) {
 
 double stod(char* str) {
     if (indexOf(str, '.') < 0)
-        return 0.0f;
+        return 0.0;
 
     double res = (double) stoi(substring(str, 0, indexOf(str, '.')));
 
     char* after_c = substr(str, indexOf(str, '.')+1);
-    double af_c = (double) stoi(after_c);
-    res += af_c * pow(10, -strlen(after_c));
+    for (int i = 0; i < strlen(after_c); i++) {
+        res += ctoi(after_c[i]) * pow(10, -i-1);
+    }
 
     return res;
 }

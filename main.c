@@ -4,7 +4,7 @@
 
 int main()
 {
-    /*char* msg = newstr("Hello World!");
+    char* msg = newstr("Hello World!");
     char* cpy = strcpy(msg);
 
     cpy[0] = 'A';
@@ -100,12 +100,7 @@ int main()
     printf("->stof:\t%f\n", stof("8.5096"));
     printf("->stod:\t%.10lf\n", stod("8.0123456789"));
 
-    printf("\n");*/
-
-    char* msg = newstr("      \n\rHello World!\n     ");
-    char* trimmed = trim(msg);
-
-    printf("Trimmed: %s\n", trimmed);
+    printf("\n");
 
     char c;
     scanf("%c", &c);
